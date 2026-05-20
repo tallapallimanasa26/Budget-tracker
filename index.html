@@ -35,7 +35,6 @@
             box-sizing: border-box;
         }
 
-        /* Responsive Dashboard Container Layout */
         .dashboard-layout {
             width: 100%;
             max-width: 960px;
@@ -61,7 +60,6 @@
             border-bottom: 4px solid var(--pirate-gold);
         }
 
-        /* Active Danger Aura State if bounty breaks layout threshold */
         .app-header.budget-breached {
             background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
             animation: pirateFlash 1.5s infinite alternate;
@@ -85,7 +83,6 @@
             text-transform: uppercase;
         }
 
-        /* Anime Premium Pill Toggle */
         .toggle-container {
             display: flex;
             background: rgba(245, 158, 11, 0.2);
@@ -131,15 +128,8 @@
 
         .budget-mode-on .toggle-slider {
             transform: translateX(100%);
-            background: var(--straw-hat-red);
         }
 
-        /* BUDGET CAP FIELD */
-        #budgetCapFieldWrapper {
-            font-family: sans-serif;
-        }
-
-        /* HUG PROGRESS MONITOR STRIP */
         .hud-progress-section {
             background: rgba(0, 0, 0, 0.4);
             border-radius: var(--radius-curved);
@@ -174,7 +164,7 @@
             transition: width 0.3s ease, background-color 0.3s ease;
         }
 
-        /* GRID SYSTEM WORKSPACE */
+        /* WORKSPACE PANELS */
         .workspace-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -192,7 +182,6 @@
             border-bottom: 2px dashed var(--border-wood);
         }
 
-        /* PIRATE HOARD DISPLAY CARD */
         .summary-card {
             background: linear-gradient(145deg, var(--parchment) 0%, var(--parchment-light) 100%);
             border: 3px solid #b45309;
@@ -242,12 +231,18 @@
             margin-top: 2px;
         }
 
-        /* MANIFEST SYSTEM FORMS */
+        /* INPUT CONFIGURATION (No Category Row) */
         .form-row-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 16px;
             margin-bottom: 20px;
+        }
+
+        .input-split {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 12px;
         }
 
         .input-item-wrap {
@@ -264,7 +259,7 @@
             letter-spacing: 0.5px;
         }
 
-        input, select {
+        input {
             padding: 12px 14px;
             border: 2px solid #cbd5e1;
             border-radius: 10px;
@@ -276,7 +271,7 @@
             width: 100%;
         }
 
-        input:focus, select:focus {
+        input:focus {
             border-color: var(--pirate-gold);
             box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
         }
@@ -307,7 +302,7 @@
         .btn-out:hover { background: var(--straw-hat-hover); }
         .action-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
 
-        /* THE PIRATE LOG LOG LEDGER */
+        /* THE PIRATE LOG LEDGER */
         .panel-heading {
             font-size: 16px;
             font-weight: 800;
@@ -354,7 +349,6 @@
 
         .item-identity { display: flex; flex-direction: column; gap: 2px; }
         .item-txt { font-weight: 700; font-size: 14px; color: var(--text-dark); }
-        .item-tag { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
 
         .item-math { display: flex; align-items: center; gap: 12px; }
         .item-cost { font-family: 'Impact', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
@@ -401,17 +395,17 @@
             animation: toastPop 0.2s ease;
         }
 
-        /* TRUE DESKTOP SPLIT MODE SYSTEM */
+        /* TRUE DESKTOP SPLIT LAYOUT */
         @media (min-width: 768px) {
             .dashboard-layout {
                 min-height: auto;
-                height: 640px;
+                height: 600px;
                 border-radius: var(--radius-curved);
                 overflow: hidden;
             }
             .workspace-grid {
                 grid-template-columns: 1.1fr 0.9fr;
-                height: calc(640px - 120px);
+                height: calc(600px - 120px);
             }
             .left-panel {
                 border-bottom: none;
@@ -433,7 +427,7 @@
             #budgetCapFieldWrapper { width: 190px; }
         }
 
-        /* Custom Keyframe Animations */
+        /* Animations */
         @keyframes pirateFlash {
             from { box-shadow: inset 0 0 20px rgba(0,0,0,0.6); }
             to { box-shadow: inset 0 0 40px rgba(239, 68, 68, 0.7); }
@@ -447,7 +441,7 @@
 
     <div class="dashboard-layout" id="dashboardHub">
         
-        <!-- ONE PIECE PIRATE NAVIGATION HUD -->
+        <!-- HEADER HUD -->
         <header class="app-header" id="appHeaderZone">
             <div class="header-top">
                 <div>
@@ -455,7 +449,6 @@
                     <div style="font-size: 11px; opacity: 0.8; margin-top: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Straw Hat Navigation Manifest</div>
                 </div>
                 
-                <!-- Pill Toggle System -->
                 <div class="toggle-container">
                     <div class="toggle-slider"></div>
                     <button class="toggle-btn active" id="tabNoBudget" onclick="toggleBudgetSystem(false)">Free Ledger</button>
@@ -463,12 +456,10 @@
                 </div>
             </div>
 
-            <!-- Budget Input Fields configuration wrapper -->
             <div id="budgetCapFieldWrapper" style="display: none; animation: fadeIn 0.2s ease;">
                 <input type="number" id="budgetCapInput" placeholder="Set Bounty Cap (₹)" style="padding: 8px 12px; font-size: 13px;" oninput="processFinancialCalculations()">
             </div>
 
-            <!-- Central HUD Gauge Metrics tracking bar wrapper -->
             <div class="hud-progress-section" id="hudProgressBarBlock">
                 <div class="progress-meta">
                     <span id="txtProgressPercentage">Bounty Depleted: 0%</span>
@@ -483,7 +474,7 @@
         <!-- DASHBOARD CONTAINER PANEL WORKSPACE -->
         <main class="workspace-grid">
             
-            <!-- LEFT AREA: STATS ENGINE & REGISTRATION FORMS -->
+            <!-- LEFT PANEL: REGISTRATION FORM & HOARD BALANCES -->
             <section class="workspace-panel left-panel">
                 <div class="summary-card">
                     <div class="balance-label">Total Active Crew Hoard</div>
@@ -501,22 +492,12 @@
                     </div>
                 </div>
 
-                <!-- SYSTEM REGISTRATION DATA FORMS -->
+                <!-- SIMPLIFIED INPUT ZONE -->
                 <div class="form-row-grid">
-                    <div class="input-item-wrap">
-                        <label for="formTitle">Log Entry Name</label>
-                        <input type="text" id="formTitle" placeholder="e.g., Sanji Cook Supplies, Berry Payday, Cola" autocomplete="off">
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 12px;">
+                    <div class="input-split">
                         <div class="input-item-wrap">
-                            <label for="formCategory">Cargo Type</label>
-                            <select id="formCategory">
-                                <option value="Galley Rations">Galley Rations (Food & Chai)</option>
-                                <option value="Ship Repairs">Ship Repairs & Rent</option>
-                                <option value="Log Pose Transit">Sea Transit (Auto / Metro)</option>
-                                <option value="Pirate Revelry">Revelry & Shopping</option>
-                                <option value="Island Loot">Island Loot (Salary / Allowance)</option>
-                            </select>
+                            <label for="formTitle">Log Entry Name</label>
+                            <input type="text" id="formTitle" placeholder="e.g., Sanji Meat, Island Loot, Cola" autocomplete="off">
                         </div>
                         <div class="input-item-wrap">
                             <label for="formAmount">Amount (₹)</label>
@@ -531,7 +512,7 @@
                 </div>
             </section>
 
-            <!-- RIGHT AREA: ACCOUNT LOG LEDGER TRACKING PANEL -->
+            <!-- RIGHT PANEL: LOGBOOK STATEMENT SCROLL -->
             <section class="workspace-panel right-panel" style="display: flex; flex-direction: column;">
                 <div class="panel-heading">
                     <span>Grand Line Journey Manifest</span>
@@ -543,28 +524,25 @@
         </main>
     </div>
 
-    <!-- Central Alert notification node banner element -->
     <div id="toast-banner"></div>
 
     <script>
-        // --- SECURE STORAGE CONFIG PACKETS STATE ---
+        // --- CENTRAL PACKET STATE ---
         let appConfig = {
             budgetSystemActive: false,
             configuredCap: 0,
             ledgerEntries: []
         };
 
-        // Initialize from local device cache memory
-        const storageDump = localStorage.getItem("onePieceControlState");
+        const storageDump = localStorage.getItem("onePieceControlStateNoCat");
         if (storageDump) {
             appConfig = JSON.parse(storageDump);
         }
 
-        // Apply initialized attributes right down onto forms fields elements
         document.getElementById("budgetCapInput").value = appConfig.configuredCap || "";
         toggleBudgetSystem(appConfig.budgetSystemActive);
 
-        // --- DECK INTERACTION DISPATCH ROUTERS ---
+        // --- DISPATCH ROUTERS ---
         function toggleBudgetSystem(enableBudget) {
             appConfig.budgetSystemActive = enableBudget;
 
@@ -597,29 +575,25 @@
 
         function registerEntry(flowType) {
             let descInput = document.getElementById("formTitle");
-            let catInput = document.getElementById("formCategory");
             let amtInput = document.getElementById("formAmount");
 
             let txt = descInput.value.trim();
-            let cat = catInput.value;
             let val = parseFloat(amtInput.value);
 
             if (txt === "" || isNaN(val) || val <= 0) {
-                launchToast("⚠️ Specify log description and proper positive values!");
+                launchToast("⚠️ Specify log description and structural non-zero amounts!");
                 return;
             }
 
             let entryPacket = {
                 uid: Date.now(),
                 title: txt,
-                category: cat,
                 amount: val,
                 type: flowType
             };
 
             appConfig.ledgerEntries.unshift(entryPacket);
             
-            // Wipe forms fields parameters resets
             descInput.value = "";
             amtInput.value = "";
 
@@ -633,14 +607,14 @@
         }
 
         function nukeEntireWorkspace() {
-            if (confirm("Throw all ledger manifest records into the ocean? This resets your log history.")) {
+            if (confirm("Throw all ledger manifest records into the ocean?")) {
                 appConfig.ledgerEntries = [];
                 processFinancialCalculations();
                 launchToast("🌊 Cargo cleared down clean");
             }
         }
 
-        // --- CALCULATION ENGINE & HEADS UP DISPLAY RENDER ---
+        // --- MATH CALCULATOR ENGINE ---
         function processFinancialCalculations() {
             let grossIn = 0;
             let grossOut = 0;
@@ -656,12 +630,10 @@
 
             let netPortfolio = grossIn - grossOut;
 
-            // Output strings straight onto textual components nodes elements
             document.getElementById("netWalletDisplay").textContent = `₹${netPortfolio.toLocaleString('en-IN')}`;
             document.getElementById("hudInflowDisplay").textContent = `₹${grossIn.toLocaleString('en-IN')}`;
             document.getElementById("hudOutflowDisplay").textContent = `₹${grossOut.toLocaleString('en-IN')}`;
 
-            // Process gauge graphics if active setting toggle matches
             let headerElement = document.getElementById("appHeaderZone");
             let titleElement = document.getElementById("headerMainTitle");
 
@@ -704,7 +676,7 @@
             }
 
             renderStatementListHTML();
-            localStorage.setItem("onePieceControlState", JSON.stringify(appConfig));
+            localStorage.setItem("onePieceControlStateNoCat", JSON.stringify(appConfig));
         }
 
         function renderStatementListHTML() {
@@ -726,7 +698,6 @@
                 row.innerHTML = `
                     <div class="item-identity">
                         <span class="item-txt">${entry.title}</span>
-                        <span class="item-tag">📦 ${entry.category}</span>
                     </div>
                     <div class="item-math">
                         <span class="item-cost ${incomeFlag ? 'flow-in' : 'flow-out'}">
